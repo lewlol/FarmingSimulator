@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class PlotMenu : MonoBehaviour
 {
+    public GameObject pasteMenu;
+
     public Image[] plotIcons;
     public Plot[] plots;
     int c;
     int x;
-
+    int currentID;
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -37,22 +39,29 @@ public class PlotMenu : MonoBehaviour
     {
         foreach(Image i in plotIcons)
         {
-            Image icon = i.GetComponentInChildren<Image>();
-            switch (plots[c].currentCrop)
-            { 
-                case Crops.None:
-                    icon.enabled = false;
-                    break;
-                case Crops.Wheat:
-                    icon.enabled = true;
-                    break;
-                case Crops.Pumpkin:
-                    icon.enabled = true;
-                    break;
+            Image icon = i.gameObject.GetComponentInChildren<Image>();
+            if(plots[x].cropData != null)
+            {
+                switch (plots[x].cropData.cropType)
+                {
+                    case Crops.None:
+                        icon.enabled = false;
+                        break;
+                    case Crops.Wheat:
+                        icon.enabled = true;
+                        break;
+                    case Crops.Pumpkin:
+                        icon.enabled = true;
+                        break;
+                }
+            }
+            else
+            {
+                icon.enabled = false;
             }
             x++;
         }
-        c = 0;
+        x = 0;
     }
 
     public void ClickToClear(int id)
@@ -61,10 +70,29 @@ public class PlotMenu : MonoBehaviour
         {
             if (id == p.plotID)
             {
+                if (p.isCleared == true)
+                {
+                    ClickToPaste(p.plotID);
+                }
+
                 p.isCleared = true;
             }
         }
         ChangeIconColour();
         ChangePlotIcons();
+    }
+
+    public void ClickToPaste(int id)
+    {
+        currentID = id - 1;
+        //Open Paste Menu
+        pasteMenu.SetActive(true);
+    }
+
+    public void PasteCropPlot(CropData cd)
+    {
+        plots[currentID].SpawnCropPlot(cd);
+        pasteMenu.SetActive(false);
+
     }
 }

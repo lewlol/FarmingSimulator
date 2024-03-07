@@ -50,4 +50,9 @@ public class PumpkinPlot : MonoBehaviour
     {
         pumpkinBools[boolNumber] = false;
     }
+
+    public void UnSubscribeEvent()
+    {
+        CustomEventSystem.customEventSystem.OnTickEvent -= TrySpawnPumpkin;
+    }
 }

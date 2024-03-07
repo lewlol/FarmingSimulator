@@ -24,6 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099124592071536222}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,7 +33,6 @@ Transform:
   - {fileID: 2778472902834310862}
   - {fileID: 7867594205719567806}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8765823949077339314
 MonoBehaviour:
@@ -48,11 +48,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCleared: 0
   plotID: 0
+  cropData: {fileID: 0}
+  grass: {fileID: 2778472902834310849}
+  tilled: {fileID: 8302677013530378608}
 --- !u!1001 &1947534712436352204
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 3494704545021859752}
     m_Modifications:
     - target: {fileID: 4433818997191748098, guid: dbb8b64422bc72f4db2b0ff9dbc3feb1, type: 3}
@@ -116,7 +120,15 @@ PrefabInstance:
       value: Plot_Grass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbb8b64422bc72f4db2b0ff9dbc3feb1, type: 3}
+--- !u!1 &2778472902834310849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4433818997191748109, guid: dbb8b64422bc72f4db2b0ff9dbc3feb1, type: 3}
+  m_PrefabInstance: {fileID: 1947534712436352204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2778472902834310862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4433818997191748098, guid: dbb8b64422bc72f4db2b0ff9dbc3feb1, type: 3}
@@ -127,6 +139,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 3494704545021859752}
     m_Modifications:
     - target: {fileID: 5231701777471413324, guid: 0526b7d0490e65749a31b859a77c999e, type: 3}
@@ -194,9 +207,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0526b7d0490e65749a31b859a77c999e, type: 3}
 --- !u!4 &7867594205719567806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5231701777471413324, guid: 0526b7d0490e65749a31b859a77c999e, type: 3}
+  m_PrefabInstance: {fileID: 2717344249638060530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8302677013530378608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6236635508544831618, guid: 0526b7d0490e65749a31b859a77c999e, type: 3}
   m_PrefabInstance: {fileID: 2717344249638060530}
   m_PrefabAsset: {fileID: 0}

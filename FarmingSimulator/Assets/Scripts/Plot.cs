@@ -6,5 +6,64 @@ public class Plot : MonoBehaviour
 {
     public bool isCleared;
     public int plotID;
-    public Crops currentCrop;
+    public CropData cropData;
+    GameObject currentPlot;
+
+    public GameObject grass;
+    public GameObject tilled;
+
+    public void SpawnCropPlot(CropData cd)
+    {
+        //Detroy Previous Crop Plot First and Unsubscribe its Event
+        if(currentPlot != null)
+        {
+
+            switch (cropData.cropType) //Unsubscribe Their Events
+            {
+                case Crops.None:
+                    //Stuff
+                    break;
+                case Crops.Wheat:
+                    //GetWheatPlot
+                    break;
+                case Crops.Pumpkin:
+                    currentPlot.GetComponent<PumpkinPlot>().UnSubscribeEvent();
+                    break;
+            }
+
+            Destroy(currentPlot);
+        }
+
+        //New Crop Data
+        cropData = cd;
+
+        //Change Plot Floor
+        switch (cropData.floorTile) 
+        {
+            case Tiles.Grass:
+                Grass();
+                break;
+            case Tiles.Tilled:
+                Till();
+                break;
+            case Tiles.Sand:
+                //Sand
+                break;
+        }
+
+        //Instantiate Crop Plot
+        GameObject newPlot = Instantiate(cropData.cropPlot, transform.position, Quaternion.identity);
+        currentPlot = newPlot;
+    }
+    public void Till()
+    {
+        grass.SetActive(false);
+        tilled.SetActive(true);
+    }
+
+    public void Grass()
+    {
+        grass.SetActive(true);
+        tilled.SetActive(false);
+    }
 }
