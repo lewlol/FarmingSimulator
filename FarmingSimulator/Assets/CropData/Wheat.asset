@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Wheat
   m_EditorClassIdentifier: 
   cropType: 1
-  cropPlot: {fileID: 0}
+  cropPlot: {fileID: 3974813812955995165, guid: c9992743050bb1c4f9937df5d98213b5, type: 3}
   floorTile: 1

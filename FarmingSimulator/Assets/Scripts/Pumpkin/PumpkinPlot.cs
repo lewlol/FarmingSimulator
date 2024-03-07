@@ -11,7 +11,7 @@ public class PumpkinPlot : MonoBehaviour
     bool full;
     public Crops cropType = Crops.Pumpkin;
 
-    [Range(0, 100)]public float pumpkinChance;
+    public GameObject gameManager;
     private void Start()
     {
         CustomEventSystem.customEventSystem.OnTickEvent += TrySpawnPumpkin;
@@ -40,7 +40,7 @@ public class PumpkinPlot : MonoBehaviour
             return;
 
         float c = Random.Range(0, 100);
-        if(c <= pumpkinChance)
+        if(c <= gameManager.GetComponent<FarmStats>().pumpkinGrowthChance)
         {
             SpawnPumpkin();
         }

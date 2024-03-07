@@ -12,7 +12,7 @@ public class WheatPlot : MonoBehaviour
 
     public Crops cropType = Crops.Wheat;
 
-    [Range(0, 100)] public float wheatChance;
+    public GameObject gameManager;
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class WheatPlot : MonoBehaviour
             return;
 
         float c = Random.Range(0, 100);
-        if(c <= wheatChance)
+        if(c <= gameManager.GetComponent<FarmStats>().wheatGrowthChance)
         {
             SpawnWheat();
         }
