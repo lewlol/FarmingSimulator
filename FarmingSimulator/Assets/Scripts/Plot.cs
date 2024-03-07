@@ -6,4 +6,5 @@ public class Plot : MonoBehaviour
 {
     public bool isCleared;
     public int plotID;
+    public Crops currentCrop;
 }

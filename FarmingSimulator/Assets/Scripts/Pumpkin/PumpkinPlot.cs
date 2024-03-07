@@ -9,6 +9,7 @@ public class PumpkinPlot : MonoBehaviour
     public Transform[] pumpkinSpots;
     public bool[] pumpkinBools;
     bool full;
+    public Crops cropType = Crops.Pumpkin;
 
     [Range(0, 100)]public float pumpkinChance;
     private void Start()

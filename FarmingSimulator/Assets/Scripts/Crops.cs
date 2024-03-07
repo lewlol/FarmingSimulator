@@ -1,4 +1,4 @@
 public enum Crops
 {
-    Wheat, Pumpkin
+    None, Wheat, Pumpkin
 }
