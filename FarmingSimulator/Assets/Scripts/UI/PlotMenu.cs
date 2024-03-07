@@ -8,6 +8,7 @@ public class PlotMenu : MonoBehaviour
     public GameObject pasteMenu;
 
     public Image[] plotIcons;
+    public Image[] icons;
     public Plot[] plots;
     int c;
     int x;
@@ -37,27 +38,26 @@ public class PlotMenu : MonoBehaviour
 
     private void ChangePlotIcons()
     {
-        foreach(Image i in plotIcons)
+        foreach(Image i in icons)
         {
-            Image icon = i.gameObject.GetComponentInChildren<Image>();
             if(plots[x].cropData != null)
             {
                 switch (plots[x].cropData.cropType)
                 {
                     case Crops.None:
-                        icon.enabled = false;
+                        i.enabled = false;
                         break;
                     case Crops.Wheat:
-                        icon.enabled = true;
+                        i.enabled = true;
                         break;
                     case Crops.Pumpkin:
-                        icon.enabled = true;
+                        i.enabled = true;
                         break;
                 }
             }
             else
             {
-                icon.enabled = false;
+                i.enabled = false;
             }
             x++;
         }
@@ -92,7 +92,16 @@ public class PlotMenu : MonoBehaviour
     public void PasteCropPlot(CropData cd)
     {
         plots[currentID].SpawnCropPlot(cd);
-        pasteMenu.SetActive(false);
 
+        ChangeIconColour();
+        ChangePlotIcons();
+
+        pasteMenu.SetActive(false);
+    }
+
+    public void TurnOffMenu()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        gameObject.SetActive(false);
     }
 }

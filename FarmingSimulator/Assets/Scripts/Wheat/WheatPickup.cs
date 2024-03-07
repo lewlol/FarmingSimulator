@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PumpkinPickup : MonoBehaviour
+public class WheatPickup : MonoBehaviour
 {
     public Crops cropType;
     public int boolNumber;
-    public PumpkinPlot plot;
+    public WheatPlot plot;
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
             other.GetComponent<Inventory>().AddItem(cropType);
             plot.ResetBool(boolNumber);

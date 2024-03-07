@@ -17,20 +17,6 @@ public class Plot : MonoBehaviour
         //Detroy Previous Crop Plot First and Unsubscribe its Event
         if(currentPlot != null)
         {
-
-            switch (cropData.cropType) //Unsubscribe Their Events
-            {
-                case Crops.None:
-                    //Stuff
-                    break;
-                case Crops.Wheat:
-                    //GetWheatPlot
-                    break;
-                case Crops.Pumpkin:
-                    currentPlot.GetComponent<PumpkinPlot>().UnSubscribeEvent();
-                    break;
-            }
-
             Destroy(currentPlot);
         }
 

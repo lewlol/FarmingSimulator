@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 488418ba036d039438449a088bdbf9a0, type: 3}
-  m_Name: Pumpkin
+  m_Name: Wheat
   m_EditorClassIdentifier: 
-  cropType: 2
-  cropPlot: {fileID: 7438773124520930694, guid: d10323bc8eb29714485a05cb997551d4, type: 3}
+  cropType: 1
+  cropPlot: {fileID: 0}
   floorTile: 1
