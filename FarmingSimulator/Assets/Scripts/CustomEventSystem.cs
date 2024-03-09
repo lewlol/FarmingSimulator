@@ -20,4 +20,22 @@ public class CustomEventSystem : MonoBehaviour
             OnTickEvent();
         }
     }
+
+    public event Action<bool, int> OnChangeCoins;
+    public void ChangeCoins(bool plus, int amount)
+    {
+        if(OnChangeCoins != null)
+        {
+            OnChangeCoins(plus, amount);
+        }
+    }
+
+    public event Action<int> OnCoinsChanged;
+    public void CoinsChanged(int amount)
+    {
+        if(OnCoinsChanged != null)
+        {
+            OnCoinsChanged(amount);
+        }
+    }
 }

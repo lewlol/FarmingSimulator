@@ -101,7 +101,6 @@ public class PlotMenu : MonoBehaviour
 
     public void TurnOffMenu()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
     }
 }
