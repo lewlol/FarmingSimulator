@@ -38,4 +38,13 @@ public class CustomEventSystem : MonoBehaviour
             OnCoinsChanged(amount);
         }
     }
+
+    public event Action<Crops, int> OnInventoryChange;
+    public void InventoryChange(Crops cropType, int amount)
+    {
+        if(OnInventoryChange != null)
+        {
+            OnInventoryChange(cropType, amount);
+        }
+    }
 }

@@ -13,9 +13,11 @@ public class Inventory : MonoBehaviour
         { 
             case Crops.Wheat:
                 wheat++;
+                CustomEventSystem.customEventSystem.InventoryChange(cropType, wheat);
                 break;
             case Crops.Pumpkin:
                 pumpkins++;
+                CustomEventSystem.customEventSystem.InventoryChange(cropType, pumpkins);
                 break;
         }
 
