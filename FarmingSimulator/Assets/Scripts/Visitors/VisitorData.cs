@@ -8,6 +8,7 @@ public class VisitorData : ScriptableObject
     [Header("Information")]
     public string visitorName;
     public GameObject visitorModel;
+    public Rarity rarity;
 
     [Header("Trade Information")]
     public Crops[] possibleCrops;

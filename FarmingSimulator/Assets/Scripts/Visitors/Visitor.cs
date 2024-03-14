@@ -11,9 +11,10 @@ public class Visitor : MonoBehaviour
     public Crops crop;
 
     GameObject player;
-    private void Start()
+    private void Awake()
     {
         player = GameObject.Find("Player");
+        SetTrade();
     }
 
     private void SetTrade()
@@ -42,6 +43,8 @@ public class Visitor : MonoBehaviour
             }
 
             player.GetComponent<Coins>().coins += coinReward;
+
+            DeleteObject();
         }
     }
 
@@ -49,7 +52,12 @@ public class Visitor : MonoBehaviour
     {
         if (player != null)
         {
-
+            DeleteObject();
         }
+    }
+
+    private void DeleteObject()
+    {
+        Destroy(gameObject);
     }
 }
