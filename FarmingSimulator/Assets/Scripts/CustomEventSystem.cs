@@ -47,4 +47,22 @@ public class CustomEventSystem : MonoBehaviour
             OnInventoryChange(cropType, amount);
         }
     }
+
+    public event Action OnInventoryOpened;
+    public void InventoryOpened()
+    {
+        if(OnInventoryOpened != null)
+        {
+            OnInventoryOpened();
+        }
+    }
+
+    public event Action<bool> OnTurnOffPlayerUI;
+    public void TurnOffPlayerUI(bool on)
+    {
+        if(OnTurnOffPlayerUI != null)
+        {
+            OnTurnOffPlayerUI(on);
+        }
+    }
 }

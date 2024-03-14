@@ -33,6 +33,7 @@ public class WheatPlot : MonoBehaviour
 
         wheat.GetComponent<WheatPickup>().plot = this;
         wheat.GetComponent<WheatPickup>().boolNumber = spawnPoint;
+        wheat.transform.parent = transform;
     }
 
     public void TrySpawnWheat()
@@ -42,7 +43,7 @@ public class WheatPlot : MonoBehaviour
             return;
 
         float c = Random.Range(0, 100);
-        if(c <= gameManager.GetComponent<FarmStats>().wheatGrowthChance)
+        if(c <= gameManager.GetComponent<FarmStats>().wheatGrowthChance + gameManager.GetComponent<FarmStats>().globalGrowthChance)
         {
             SpawnWheat();
         }

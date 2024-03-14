@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     public void Start()
     {
         CustomEventSystem.customEventSystem.OnInventoryChange += ChangeUI;
+        CustomEventSystem.customEventSystem.OnInventoryOpened += SwitchInv;
     }
 
     public void ChangeUI(Crops cropType, int amount)
@@ -28,12 +29,9 @@ public class InventoryUI : MonoBehaviour
 
     }
 
-    private void Update()
+    public void SwitchInv()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            bool inventoryOpen = inventory.activeSelf;
-            inventory.SetActive(!inventoryOpen);
-        }
+        bool i = inventory.activeSelf;
+        inventory.SetActive(!i);
     }
 }

@@ -20,5 +20,6 @@ public class LaptopMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
+        CustomEventSystem.customEventSystem.TurnOffPlayerUI(true);
     }
 }

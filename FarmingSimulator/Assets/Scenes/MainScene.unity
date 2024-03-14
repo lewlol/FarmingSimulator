@@ -1825,7 +1825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164964304}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18491122, y: 0.05372734, z: -0.010124796, w: 0.9812333}
+  m_LocalRotation: {x: 0.18491122, y: 0.053727407, z: -0.01012481, w: 0.98123324}
   m_LocalPosition: {x: -1.3101908, y: 6.2, z: -24.128262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12087,6 +12087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad18d53a763c7e4e99bf0dca0021b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canOpen: 0
+  isOpen: 0
   pumpkins: 0
   wheat: 0
 --- !u!1001 &1271319521
@@ -17983,7 +17985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942047890}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18491122, y: 0.053727355, z: -0.010124801, w: 0.9812333}
+  m_LocalRotation: {x: 0.18491124, y: 0.053727392, z: -0.010124809, w: 0.98123324}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19205,6 +19207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7510965349362832970, guid: 471807048c0fc47488ff9bdb9e36449e, type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 890626104}
     - target: {fileID: 8752061381110575618, guid: 471807048c0fc47488ff9bdb9e36449e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

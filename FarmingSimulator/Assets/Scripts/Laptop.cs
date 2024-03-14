@@ -11,6 +11,9 @@ public class Laptop : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             canOpen = true;
+
+            //Check if Open to Stop Both Being Opened
+            other.GetComponent<Inventory>().canOpen = false;
         }
     }
 
@@ -19,6 +22,7 @@ public class Laptop : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             canOpen = false;
+            other.GetComponent<Inventory>().canOpen = true;
         }
     }
 
@@ -28,6 +32,7 @@ public class Laptop : MonoBehaviour
         {
             laptopMenu.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
+            CustomEventSystem.customEventSystem.TurnOffPlayerUI(false);
         }
     }
 }

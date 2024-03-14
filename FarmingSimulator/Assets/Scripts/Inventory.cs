@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public bool canOpen;
+    public bool isOpen;
+
     public int pumpkins;
     public int wheat;
 
+    private void Start()
+    {
+        canOpen = true;
+    }
     public void AddItem(Crops cropType)
     {
         switch (cropType)
@@ -21,5 +28,17 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && canOpen)
+        {
+            OpenInv();
+        }
+    }
+    public void OpenInv()
+    {
+        CustomEventSystem.customEventSystem.InventoryOpened();
     }
 }

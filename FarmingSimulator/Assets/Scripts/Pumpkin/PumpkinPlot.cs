@@ -31,6 +31,7 @@ public class PumpkinPlot : MonoBehaviour
 
         pumpkin.GetComponent<PumpkinPickup>().plot = this;
         pumpkin.GetComponent<PumpkinPickup>().boolNumber = spawnPoint;
+        pumpkin.transform.parent = transform;
     }
 
     private void TrySpawnPumpkin()
@@ -40,7 +41,7 @@ public class PumpkinPlot : MonoBehaviour
             return;
 
         float c = Random.Range(0, 100);
-        if(c <= gameManager.GetComponent<FarmStats>().pumpkinGrowthChance)
+        if(c <= gameManager.GetComponent<FarmStats>().pumpkinGrowthChance + gameManager.GetComponent<FarmStats>().globalGrowthChance)
         {
             SpawnPumpkin();
         }
