@@ -136,13 +136,7 @@ public class VisitorStand : MonoBehaviour
     {
         if (player != null)
         {
-            switch (crop)
-            {
-                case Crops.Wheat:
-                    player.GetComponent<Inventory>().wheat -= askAmount; break;
-                case Crops.Pumpkin:
-                    player.GetComponent<Inventory>().pumpkins -= askAmount; break;
-            }
+            player.GetComponent<Inventory>().RemoveItem(crop, askAmount);
 
             CustomEventSystem.customEventSystem.ChangeCoins(true, coinReward);
 
