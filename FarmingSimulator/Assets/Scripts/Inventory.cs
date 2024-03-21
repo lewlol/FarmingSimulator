@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +43,31 @@ public class Inventory : MonoBehaviour
                 pumpkins -= amount;
                 CustomEventSystem.customEventSystem.InventoryChange(cropType, pumpkins);
                 break;
+        }
+    }
+
+   public bool GetCropValue(Crops cropType, int amount)
+    {
+        if(cropType == Crops.Wheat)
+        {
+            if(amount <= wheat)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }else if(cropType == Crops.Pumpkin)
+        {
+            if (amount <= pumpkins)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 

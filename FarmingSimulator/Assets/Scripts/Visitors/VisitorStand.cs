@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class VisitorStand : MonoBehaviour
@@ -30,6 +31,7 @@ public class VisitorStand : MonoBehaviour
 
     GameObject player;
 
+    public int cropInvAmount;
     private void Awake()
     {
         player = GameObject.Find("Player");
@@ -136,14 +138,19 @@ public class VisitorStand : MonoBehaviour
     {
         if (player != null)
         {
-            player.GetComponent<Inventory>().RemoveItem(crop, askAmount);
+            player.GetComponent<Inventory>().GetCropValue(crop, askAmount);
 
-            CustomEventSystem.customEventSystem.ChangeCoins(true, coinReward);
+            if(cropInvAmount >= askAmount)
+            {
+                player.GetComponent<Inventory>().RemoveItem(crop, askAmount);
 
-            tradeMenu.SetActive(false);
-            Destroy(visitorObj);
+                CustomEventSystem.customEventSystem.ChangeCoins(true, coinReward);
 
-            Cursor.lockState = CursorLockMode.Locked;
+                tradeMenu.SetActive(false);
+                Destroy(visitorObj);
+
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 
