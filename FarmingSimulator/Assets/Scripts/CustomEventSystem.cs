@@ -21,7 +21,7 @@ public class CustomEventSystem : MonoBehaviour
         }
     }
 
-    public event Action<bool, int> OnChangeCoins;
+    public event Action<bool, int> OnChangeCoins; //Add Coins with this
     public void ChangeCoins(bool plus, int amount)
     {
         if(OnChangeCoins != null)
@@ -30,7 +30,7 @@ public class CustomEventSystem : MonoBehaviour
         }
     }
 
-    public event Action<int> OnCoinsChanged;
+    public event Action<int> OnCoinsChanged; //This updated COIN UI
     public void CoinsChanged(int amount)
     {
         if(OnCoinsChanged != null)

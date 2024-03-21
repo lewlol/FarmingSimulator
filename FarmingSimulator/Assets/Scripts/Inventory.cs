@@ -14,20 +14,35 @@ public class Inventory : MonoBehaviour
     {
         canOpen = true;
     }
-    public void AddItem(Crops cropType)
+    public void AddItem(Crops cropType, int amount)
     {
         switch (cropType)
         { 
             case Crops.Wheat:
-                wheat++;
+                wheat += amount;
                 CustomEventSystem.customEventSystem.InventoryChange(cropType, wheat);
                 break;
             case Crops.Pumpkin:
-                pumpkins++;
+                pumpkins += amount;
                 CustomEventSystem.customEventSystem.InventoryChange(cropType, pumpkins);
                 break;
         }
 
+    }
+
+    public void RemoveItem(Crops cropType, int amount)
+    {
+        switch (cropType)
+        {
+            case Crops.Wheat:
+                wheat -= amount;
+                CustomEventSystem.customEventSystem.InventoryChange(cropType, wheat);
+                break;
+            case Crops.Pumpkin:
+                pumpkins -= amount;
+                CustomEventSystem.customEventSystem.InventoryChange(cropType, pumpkins);
+                break;
+        }
     }
 
     private void Update()

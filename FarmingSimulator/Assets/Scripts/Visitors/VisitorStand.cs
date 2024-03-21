@@ -16,8 +16,24 @@ public class VisitorStand : MonoBehaviour
     float c;
 
     public GameObject visitorPrefab;
-    public Transform 
+    public Transform spawnPos;
 
+    GameObject visitorObj;
+
+    bool canOpenMenu;
+    public GameObject tradeMenu;
+
+    //Trade Stuff
+    public int askAmount;
+    public int coinReward;
+    public Crops crop;
+
+    GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player");
+    }
     private void Update()
     {
         if (unlocked && available)
@@ -30,6 +46,14 @@ public class VisitorStand : MonoBehaviour
                 available = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (canOpenMenu)
+            {
+                OpenTradeMenu();
+            }
+        }    
     }
 
     private void RaritySelect()
@@ -83,6 +107,80 @@ public class VisitorStand : MonoBehaviour
 
     private void SpawnVisitor()
     {
-        GameObject visitor = Instantiate(visitorPrefab, )
+        visitorObj = Instantiate(visitorPrefab, spawnPos.position, Quaternion.identity);
+        SetTrade();
+    }
+
+    private void OpenTradeMenu()
+    {
+        tradeMenu.SetActive(true);
+
+        tradeMenu.GetComponent<TradeMenuUI>().SetMenuValues(askAmount, null, coinReward);
+
+        Cursor.lockState = CursorLockMode.None;
+    }
+    private void SetTrade()
+    {
+        //Set Crop Type
+        int c = Random.Range(0, activeVisitor.possibleCrops.Length);
+        crop = activeVisitor.possibleCrops[c];
+
+        //Amount to Ask For
+        askAmount = Random.Range(activeVisitor.minAskAmount, activeVisitor.maxAskAmount);
+
+        //Rewards
+        coinReward = Random.Range(activeVisitor.minCoinReward, activeVisitor.maxCoinReward);
+    }
+
+    public void AcceptRequest()
+    {
+        if (player != null)
+        {
+            switch (crop)
+            {
+                case Crops.Wheat:
+                    player.GetComponent<Inventory>().wheat -= askAmount; break;
+                case Crops.Pumpkin:
+                    player.GetComponent<Inventory>().pumpkins -= askAmount; break;
+            }
+
+            CustomEventSystem.customEventSystem.ChangeCoins(true, coinReward);
+
+            tradeMenu.SetActive(false);
+            Destroy(visitorObj);
+
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void DenyRequest()
+    {
+        tradeMenu.SetActive(false);
+        Destroy(visitorObj);
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            //Allow the Open of Menu
+            canOpenMenu = true;
+
+            //Stop Inventory
+            collision.gameObject.GetComponent<Inventory>().canOpen = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            //Deny Open Menu
+            canOpenMenu = false;
+
+            //Allow Inventory
+            other.gameObject.GetComponent<Inventory>().canOpen = true;
+        }
     }
 }

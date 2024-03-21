@@ -12,7 +12,7 @@ public class PumpkinPickup : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.GetComponent<Inventory>().AddItem(cropType);
+            other.GetComponent<Inventory>().AddItem(cropType, 1);
             plot.ResetBool(boolNumber);
 
             //Destroy

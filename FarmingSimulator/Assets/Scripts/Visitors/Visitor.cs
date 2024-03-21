@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Visitor : MonoBehaviour
@@ -34,14 +35,7 @@ public class Visitor : MonoBehaviour
     {
         if (player != null)
         {
-            switch (crop)
-            {
-                case Crops.Wheat:
-                    player.GetComponent<Inventory>().wheat -= askAmount; break;
-                case Crops.Pumpkin:
-                    player.GetComponent<Inventory>().pumpkins -= askAmount; break;
-            }
-
+            player.GetComponent<Inventory>().RemoveItem(crop, askAmount);
             player.GetComponent<Coins>().coins += coinReward;
 
             DeleteObject();
